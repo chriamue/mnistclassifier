@@ -19,6 +19,7 @@ class Predictor(object):
         if os.path.isfile(modelfile):
             checkpoint = torch.load(modelfile)
             self.model.load_state_dict(checkpoint['model_state_dict'])
+        self.model.eval()
 
     def predict(self, images):
         outputs = self.model(images)

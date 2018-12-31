@@ -19,3 +19,4 @@ def test_train_mnist():
     trainer.save()
     trainer.load()
     assert trainer.performance() > 0
+    print(trainer.trainset[0][0].size())
