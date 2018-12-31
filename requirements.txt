@@ -1,0 +1,13 @@
+# default
+numpy
+h5py
+tqdm
+pyyaml
+pytest
+pillow
+
+# machine learning
+scipy
+scikit-learn
+torch
+torchvision
