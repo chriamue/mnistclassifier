@@ -1,3 +1,6 @@
+from importlib import import_module
+import os
+import importlib.util
 import torchvision.models as models
 from .cifar10 import Cifar10
 
@@ -13,4 +16,11 @@ def available():
 
 
 def get_model(name):
-    return model_class.get(name)
+    if name in model_class.keys():
+        return model_class.get(name)
+    class_name = os.path.splitext(os.path.basename(name))[0]
+    print(name, class_name)
+    spec = importlib.util.spec_from_file_location(class_name, name)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return getattr(module, class_name)
