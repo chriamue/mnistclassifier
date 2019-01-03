@@ -31,7 +31,7 @@ class FileSet():
     
     def loadImage(self, image_tuple):
         filepath, target = image_tuple
-        image = Image.open(filepath)
+        image = Image.open(os.path.join(self.root, filepath))
         image = self.transform(image)
         return image, target
 
