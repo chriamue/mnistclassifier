@@ -1,17 +1,21 @@
 train:
- 0:
+ '0':
   - '../../tests/res/images/3.png'
   - '../../tests/res/images/10.png'
- 1:
+ '1':
   - '../../tests/res/images/2.png'
   - '../../tests/res/images/5.png'
- 2:
+ '2':
   - '../../tests/res/images/1.png'
   - '../../tests/res/images/35.png'
 test:
- 0:
+ '0':
   - '../../tests/res/images/1061.png'
- 1:
+ '1':
   - '../../tests/res/images/409.png'
- 2:
+ '2':
   - '../../tests/res/images/731.png'
+classes:
+ - '0'
+ - '1'
+ - '2'

@@ -10,6 +10,7 @@ from . import datapath
 
 class FileSet():
     dataset = []
+    classes = []
 
     def __init__(self, config: Config, transform, train=True):
         self.config = config
@@ -25,9 +26,10 @@ class FileSet():
             if self.train:
                 mode = 'train'
             self.datasetfile = yaml.load(file)
+            self.classes = self.datasetfile['classes']
             for label in self.datasetfile[mode]:
                 for imgfile in self.datasetfile[mode][label]:
-                    self.dataset.append((imgfile, label))
+                    self.dataset.append((imgfile, self.classes.index(label)))
     
     def loadImage(self, image_tuple):
         filepath, target = image_tuple
