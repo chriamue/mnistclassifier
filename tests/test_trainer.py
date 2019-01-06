@@ -18,7 +18,8 @@ def test_train_cifar10():
     trainer.train()
     trainer.save()
     trainer.load()
-    assert trainer.performance() > 0
+    performance, _, _ = trainer.performance()
+    assert performance > 0
     print(trainer.trainset[0][0].size())
 
 
@@ -32,5 +33,6 @@ def test_train_mnist():
     trainer.train()
     trainer.save()
     trainer.load()
-    assert trainer.performance() > 0
+    performance, _, _ = trainer.performance()
+    assert performance > 0
     print(trainer.trainset[0][0].size())

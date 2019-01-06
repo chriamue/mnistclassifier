@@ -86,4 +86,4 @@ class Trainer(object):
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
         performance_ = 100 * correct / total
-        return performance_
+        return performance_, correct, total
