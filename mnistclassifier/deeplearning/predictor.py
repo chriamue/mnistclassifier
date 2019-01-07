@@ -4,6 +4,7 @@ import torch
 from . import get_model
 from ..data import datapath
 
+
 class Predictor(object):
 
     model = None
@@ -21,7 +22,9 @@ class Predictor(object):
             self.model.load_state_dict(checkpoint['model_state_dict'])
         self.model.eval()
 
-    def predict(self, images):
+    def predict(self, images, top=3):
         outputs = self.model(images)
-        _, predicted = torch.Tensor.max(outputs, 1)
-        return predicted
+        top_probabilities, top_classes = torch.Tensor.topk(
+            outputs, top, 1, sorted=True)
+        prediction = top_classes[0]
+        return prediction, top_probabilities, top_classes
